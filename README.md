@@ -9,10 +9,10 @@
 | /counties     | GET         |      | all counties      |
 | /counties/:id | GET         |      | a county by id    |
 | /counties     | POST        | Y    | new county addedn |
-| /counties     | PUT         | Y    | edited county     |
-| /counties     | DELETE      | Y    | id                |
+| /counties/:id | PUT         | Y    | edited county     |
+| /counties/:id | DELETE      | Y    | id                |
 | /cities       | GET         |      | all cities        |
 | /cities/:id   | GET         |      | a city by id      |
 | /cities       | POST        | Y    | new city addedn   |
-| /cities       | PUT         | Y    | edited city       |
-| /cities       | DELETE      | Y    | id                |
+| /cities/:id   | PUT         | Y    | edited city       |
+| /cities/:id   | DELETE      | Y    | id                |
