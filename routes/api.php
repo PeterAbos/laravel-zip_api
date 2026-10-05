@@ -10,6 +10,8 @@ Route::post('/counties', [CountiesController::class, 'store'])
     ->middleware('auth:sanctum');
 Route::put('/counties/{id}', [CountiesController::class, 'update'])
     ->middleware('auth:sanctum');
+Route::delete('/counties/{id}', [CountiesController::class, 'destroy'])
+    ->middleware('auth:sanctum');
 
 Route::post('/users/login', [UsersController::class, 'login']);
 Route::get('/users', [UsersController::class, 'index'])

@@ -39,4 +39,13 @@ class CountiesController extends Controller
 
         return response()->json(compact('county'));
     }
+
+    public function destroy($id) {
+        $county = County::findOrFail($id);
+        $county->delete();
+
+        return response()->json([
+            'message' => 'County deleted successfully'
+        ]);
+    }
 }
