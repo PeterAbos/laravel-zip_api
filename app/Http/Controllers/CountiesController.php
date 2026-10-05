@@ -27,4 +27,16 @@ class CountiesController extends Controller
 
         return response()->json(compact('county'));
     }
+
+    public function update(Request $request, $id) {
+        $request->validate([
+            'name' => 'required|string',
+            'badge_url' => 'required'
+        ]);
+
+        $county = County::findOrFail($id);
+        $county->update($request->all());
+
+        return response()->json(compact('county'));
+    }
 }
