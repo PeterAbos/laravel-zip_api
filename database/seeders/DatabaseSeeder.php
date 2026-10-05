@@ -17,8 +17,13 @@ class DatabaseSeeder extends Seeder
     {
         // User::factory(10)->create();
 
+        $this->call([
+            CountySeeder::class,
+            CitySeeder::class
+        ]);
+
         User::factory()->create([
-            'name' => 'petike',
+            'name' => 'teszt',
             'email' => 'test@test.com',
             'password' => '123'
         ]);
