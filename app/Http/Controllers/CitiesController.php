@@ -29,4 +29,18 @@ class CitiesController extends Controller
 
         return response()->json($city);
     }
+
+    public function update(Request $request, $id) {
+        $request->validate([
+            'zip_code' => 'required|min:4|max:4',
+            'name' => 'required',
+            'population' => 'required',
+            'county_id' => 'required'
+        ]);
+
+        $city = City::findOrFail($id);
+        $city->update($request->all());
+
+        return response()->json($city);
+    }
 }
