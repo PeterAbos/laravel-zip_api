@@ -20,6 +20,8 @@ Route::post('/cities', [CitiesController::class, 'store'])
     ->middleware('auth:sanctum');
 Route::put('/cities/{id}', [CitiesController::class, 'update'])
     ->middleware('auth:sanctum');
+Route::delete('/cities/{id}', [CitiesController::class, 'destroy'])
+    ->middleware('auth:sanctum');
 
 Route::post('/users/login', [UsersController::class, 'login']);
 Route::get('/users', [UsersController::class, 'index'])
