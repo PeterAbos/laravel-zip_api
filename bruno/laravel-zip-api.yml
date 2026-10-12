@@ -1,0 +1,251 @@
+opencollection: 1.0.0
+info:
+  name: laravel-zip-api
+config:
+  proxy:
+    inherit: true
+    config:
+      protocol: http
+      hostname: ''
+      port: ''
+      auth:
+        username: ''
+        password: ''
+      bypassProxy: ''
+  environments:
+    - name: local
+      variables:
+        - name: token
+          value: 3|yyM0vgAOCzCn017Q09Q39qdoLs1nAxOysqz3rtVW230d27a3
+        - name: url
+          value: http://localhost:8000
+items:
+  - info:
+      name: counties/:id
+      type: http
+      seq: 4
+    http:
+      method: GET
+      url: '{{url}}/api/counties/2'
+      auth: inherit
+    settings:
+      encodeUrl: true
+      timeout: 0
+      followRedirects: true
+      maxRedirects: 5
+      forwardAuthorizationHeader: true
+  - info:
+      name: counties
+      type: http
+      seq: 3
+    http:
+      method: GET
+      url: '{{url}}/api/counties'
+      auth: inherit
+    settings:
+      encodeUrl: true
+      timeout: 0
+      followRedirects: true
+      maxRedirects: 5
+      forwardAuthorizationHeader: true
+  - info:
+      name: create county
+      type: http
+      seq: 5
+    http:
+      method: POST
+      url: '{{url}}/api/counties'
+      body:
+        type: json
+        data: |-
+          {
+            "name": "Teszt megye",
+            "badge_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQjgfYcXB-cFi59H8xDGPOPI-UbQU2H2AwUB6H72dWd1vhBrI0Oza5EAUw&s=10"
+          }
+      auth:
+        type: bearer
+        token: '{{token}}'
+    settings:
+      encodeUrl: true
+      timeout: 0
+      followRedirects: true
+      maxRedirects: 5
+      forwardAuthorizationHeader: true
+  - info:
+      name: delete county
+      type: http
+      seq: 7
+    http:
+      method: DELETE
+      url: '{{url}}/api/counties/20'
+      auth:
+        type: bearer
+        token: '{{token}}'
+    settings:
+      encodeUrl: true
+      timeout: 0
+      followRedirects: true
+      maxRedirects: 5
+      forwardAuthorizationHeader: true
+  - info:
+      name: login
+      type: http
+      seq: 1
+    http:
+      method: POST
+      url: '{{url}}/api/users/login'
+      body:
+        type: json
+        data: |-
+          {
+            "email": "test@test.com",
+            "password": "123"
+          }
+      auth: inherit
+    settings:
+      encodeUrl: true
+      timeout: 0
+      followRedirects: true
+      maxRedirects: 5
+      forwardAuthorizationHeader: true
+  - info:
+      name: update county
+      type: http
+      seq: 6
+    http:
+      method: PUT
+      url: '{{url}}/api/counties/20'
+      body:
+        type: json
+        data: |-
+          {
+            "name": "Teszt megye2222",
+            "badge_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQjgfYcXB-cFi59H8xDGPOPI-UbQU2H2AwUB6H72dWd1vhBrI0Oza5EAUw&s=10"
+          }
+      auth:
+        type: bearer
+        token: '{{token}}'
+    settings:
+      encodeUrl: true
+      timeout: 0
+      followRedirects: true
+      maxRedirects: 5
+      forwardAuthorizationHeader: true
+  - info:
+      name: users-list
+      type: http
+      seq: 2
+    http:
+      method: GET
+      url: '{{url}}/api/users'
+      auth:
+        type: bearer
+        token: '{{token}}'
+    settings:
+      encodeUrl: true
+      timeout: 0
+      followRedirects: true
+      maxRedirects: 5
+      forwardAuthorizationHeader: true
+  - info:
+      name: cities
+      type: http
+      seq: 8
+    http:
+      method: GET
+      url: '{{url}}/api/cities'
+      auth: inherit
+    settings:
+      encodeUrl: true
+      timeout: 0
+      followRedirects: true
+      maxRedirects: 5
+      forwardAuthorizationHeader: false
+  - info:
+      name: cities/:id
+      type: http
+      seq: 9
+    http:
+      method: GET
+      url: '{{url}}/api/cities/1'
+      auth: inherit
+    settings:
+      encodeUrl: true
+      timeout: 0
+      followRedirects: true
+      maxRedirects: 5
+      forwardAuthorizationHeader: false
+  - info:
+      name: create city
+      type: http
+      seq: 10
+    http:
+      method: POST
+      url: '{{url}}/api/cities'
+      body:
+        type: json
+        data: |-
+          {
+            "zip_code": 2120,
+            "name": "Dunakeszi",
+            "population": 46200,
+            "county_id": 13
+          }
+      auth:
+        type: bearer
+        token: '{{token}}'
+    settings:
+      encodeUrl: true
+      timeout: 0
+      followRedirects: true
+      maxRedirects: 5
+      forwardAuthorizationHeader: false
+  - info:
+      name: update city
+      type: http
+      seq: 11
+    http:
+      method: PUT
+      url: '{{url}}/api/cities/32'
+      body:
+        type: json
+        data: |-
+          {
+            "zip_code": 2121,
+            "name": "Dunakeszii",
+            "population": 46600,
+            "county_id": 14
+          }
+      auth:
+        type: bearer
+        token: '{{token}}'
+    settings:
+      encodeUrl: true
+      timeout: 0
+      followRedirects: true
+      maxRedirects: 5
+      forwardAuthorizationHeader: false
+  - info:
+      name: delete city
+      type: http
+      seq: 12
+    http:
+      method: DELETE
+      url: '{{url}}/api/cities/32'
+      auth:
+        type: bearer
+        token: '{{token}}'
+    settings:
+      encodeUrl: true
+      timeout: 0
+      followRedirects: true
+      maxRedirects: 5
+      forwardAuthorizationHeader: false
+bundled: true
+extensions:
+  bruno:
+    ignore:
+      - node_modules
+      - .git
+    exportedAt: '2026-10-12T13:16:42.776Z'
+    exportedUsing: Bruno
