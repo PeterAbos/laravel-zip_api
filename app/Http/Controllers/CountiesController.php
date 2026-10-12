@@ -7,9 +7,16 @@ use Illuminate\Http\Request;
 
 class CountiesController extends Controller
 {
-    public function index() {
-        $counties = County::all();
-        return response()->json(['counties' => $counties]);
+    public function index(Request $request) {
+        $query = County::query();
+
+        if ($request->filled('search')) {
+            $query->where('name', 'LIKE', '%'.$request->search.'%');
+        }
+
+        $counties = $query->get();
+
+        return response()->json(compact('counties'));
     }
 
     public function show($id) {
